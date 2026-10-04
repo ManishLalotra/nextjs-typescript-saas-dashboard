@@ -1,0 +1,21 @@
+name: Production Deployment Template
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'Target Environment'
+        required: true
+        default: 'production'
+
+# Example production deployment template for Standalone Docker on VPS/ECS
+jobs:
+  deploy:
+    name: Deploy Standalone Next.js App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy via SSH
+        run: |
+          echo "[Example Workflow] This workflow is intentionally manual (workflow_dispatch)."
+          echo "Target: ${{ github.event.inputs.target_env }}"
